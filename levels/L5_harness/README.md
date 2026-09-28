@@ -34,11 +34,14 @@ Point every harness at the same debuggable Chrome (`uv run python -m
 common.cdp_discovery status` prints its endpoint; usually port 9222 or 9223).
 
 ```bash
+# Your mock app (see mock-app/README.md), e.g. http://localhost:8787
+export MOCK_APP_URL=http://localhost:8787
+
 # browser-harness: attaches to the browser named in BU_CDP_WS
 export BU_CDP_WS=$(uv run python -c "from common.browsers import local_cdp_url; print(local_cdp_url())")
 uvx --from browser-harness browser-harness --doctor
-uvx --from browser-harness browser-harness <<'PY'
-new_tab("https://browser-agents-mock.laxman-225.workers.dev/items")
+uvx --from browser-harness browser-harness <<PY
+new_tab("$MOCK_APP_URL/items")
 print(page_info())
 PY
 
@@ -50,7 +53,7 @@ claude mcp add chrome-devtools -- npx -y chrome-devtools-mcp@latest --browser-ur
 
 # agent-browser
 npm install -g agent-browser && agent-browser install
-agent-browser connect 9223 && agent-browser open https://browser-agents-mock.laxman-225.workers.dev/items
+agent-browser connect 9223 && agent-browser open "$MOCK_APP_URL/items"
 agent-browser snapshot
 ```
 

@@ -6,7 +6,7 @@ to give an automated browser a session:
 | Approach | How | Used in this lab |
 |----------|-----|------------------|
 | **Dedicated profile** | Chrome with its own `--user-data-dir`, kept between runs | `cdp_discovery.py`: `~/.config/google-chrome-cdp-lab` (clean), or `~/.config/google-chrome-cdp` (seeded) |
-| **Seeded profile** | Copy cookies and logins from your everyday profile into the dedicated one | `cdp_discovery.py sync --profile "Munigala AI"`; `BU_CDP_SEED=1` |
+| **Seeded profile** | Copy cookies and logins from your everyday profile into the dedicated one | `cdp_discovery.py sync --profile "<your profile>"`; `BU_CDP_SEED=1` |
 | **Portable state** | Playwright `storage_state`: cookies + localStorage as JSON, loaded into any context | `check.py` saves one |
 | **Hosted profiles / vaults** | Browser Use Cloud profiles (`profileId`), TinyFish Browser Context Profiles and vault credentials | Mentioned in L2/L4; not used, since our targets are public |
 
@@ -16,14 +16,14 @@ to give an automated browser a session:
 # The lab default: clean profile, no logins
 uv run python -m extras.auth_sessions.check
 
-# Your seeded profile (the stock-research one), read-only check
+# A seeded profile (your logins), read-only check
 BU_CDP_PROFILE=~/.config/google-chrome-cdp BU_CDP_SEED=1 uv run python -m extras.auth_sessions.check
 ```
 
 Output on the lab profile (2026-09-27):
 
 ```
-profile: /home/laxman/.config/google-chrome-cdp-lab  (seeding off)
+profile: ~/.config/google-chrome-cdp-lab  (seeding off)
 github.com: not signed in
 cookies in this browser: 8 total, 6 for github.com
 storage_state: 8 cookies, 1 origins → runs/storage_state.example.json

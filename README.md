@@ -39,8 +39,14 @@ Node 22 + pnpm (only to change or redeploy the mock app).
 ```bash
 cd browser-agents-lab
 uv sync
-cp .env.example .env        # set RECEIPT_SECRET to the mock app's secret
+cp .env.example .env
 ```
+
+Then set up your own copy of the mock app: run it locally, and deploy it to a
+free Cloudflare account if you want the cloud levels (L2, hosted L4 agents).
+It takes about five minutes; follow
+[`mock-app/README.md` → Deploy your own](mock-app/README.md#deploy-your-own).
+It gives you the `MOCK_APP_URL` and `RECEIPT_SECRET` values for `.env`.
 
 API keys go in `.env` or as `export KEY=...` lines in `~/.bashrc` (both are
 read by `common/config.py`):
@@ -81,9 +87,9 @@ browser-agents-lab/
   runs/, traces/   generated, gitignored
 ```
 
-- **Mock app:** `https://browser-agents-mock.laxman-225.workers.dev`. A stateless
-  Worker; POST stores nothing and returns a receipt: HMAC(run ID + rows). See
-  [`mock-app/README.md`](mock-app/README.md).
+- **Mock app:** a stateless Cloudflare Worker you run yourself (locally, or
+  deployed to your own account). POST stores nothing and returns a receipt:
+  HMAC(run ID + rows). See [`mock-app/README.md`](mock-app/README.md).
 - **Checker** (`common/task.py`): see [How runs are checked](#how-runs-are-checked).
 - **Local browser:** see [Local browser (CDP)](#local-browser-cdp).
 - **Models:** everything the lab calls itself goes through OpenRouter to

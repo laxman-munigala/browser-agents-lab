@@ -1,11 +1,8 @@
 """CDP endpoint discovery — and on-demand launch — for connecting Playwright to Chrome.
 
-Copied from ~/projects/stock-research-skill/common/browser/cdp_discovery.py.
-Lab change: BU_CDP_SEED=0 turns off cookie seeding, so a new profile starts
-empty (the lab's default; see README.md "Local browser (CDP)").
-
-Shared helper so multiple scrapers can drive a real, logged-in Chrome via the
-Chrome DevTools Protocol — no bundled Chromium, no login step.
+Lets any script drive a real Chrome via the Chrome DevTools Protocol, with no
+bundled Chromium. BU_CDP_SEED=0 turns off cookie seeding, so a new profile
+starts empty (the lab's default; see README.md "Local browser (CDP)").
 
 Two Chrome facts shape this module:
   * Chrome >= 136 refuses --remote-debugging-port while running on the default
@@ -14,10 +11,11 @@ Two Chrome facts shape this module:
   * One profile is held by one Chrome process, so a second launch against a
     profile already in use just hands a window to the running instance.
 
-Hence a dedicated persistent data dir (~/.config/google-chrome-cdp), seeded once
-from ONE of your everyday Chrome profiles — SOURCE_PROFILE, by the display name
-Chrome shows in its profile menu — so that profile's fiscal.ai / X logins carry
-over. The launched window is left running between scrapes; close it when done.
+Hence a dedicated persistent data dir (BU_CDP_PROFILE, default
+~/.config/google-chrome-cdp). When seeding is on, it is seeded once from ONE of
+your everyday Chrome profiles (SOURCE_PROFILE, by the display name Chrome shows
+in its profile menu, or its directory name) so that profile's logins carry over.
+The launched window is left running between runs; close it when done.
 
 Usage:
     from cdp_discovery import discover_cdp
@@ -26,13 +24,13 @@ Usage:
     endpoint = discover_cdp("http://localhost:9223")
 
 The copy does not track the original: refresh it with `sync` whenever the source
-profile has picked up cookies the scrapers need.
+profile has picked up cookies your scripts need.
 
 CLI:
     python cdp_discovery.py status
     python cdp_discovery.py profiles
-    python cdp_discovery.py sync [--no-launch] [--profile "Munigala AI"]
-    python cdp_discovery.py launch [--reseed] [--profile "Munigala AI"]
+    python cdp_discovery.py sync [--no-launch] [--profile "Work"]
+    python cdp_discovery.py launch [--reseed] [--profile "Work"]
 """
 
 from __future__ import annotations
@@ -79,10 +77,11 @@ EVERYDAY_PROFILES = (
     Path.home() / ".config/chromium",
 )
 
-# Which of your everyday Chrome profiles the CDP browser impersonates. Accepts the
-# display name shown in Chrome's profile menu ("Munigala AI") or the on-disk
-# directory name ("Profile 2"); BU_CDP_SOURCE_PROFILE overrides it.
-SOURCE_PROFILE = os.environ.get("BU_CDP_SOURCE_PROFILE") or "Munigala AI"
+# Which of your everyday Chrome profiles seeding copies from. Accepts the display
+# name shown in Chrome's profile menu (e.g. "Work") or the on-disk directory name
+# (e.g. "Profile 2"). Defaults to Chrome's first profile, "Default";
+# BU_CDP_SOURCE_PROFILE overrides it.
+SOURCE_PROFILE = os.environ.get("BU_CDP_SOURCE_PROFILE") or "Default"
 
 # Records which profile directory a seeded CDP dir actually holds, so a later
 # launch uses the same one without having to re-resolve the display name.
@@ -330,7 +329,7 @@ def list_profiles(root: Optional[Path] = None) -> dict[str, str]:
 
 
 def resolve_profile(name: str, root: Optional[Path] = None) -> str:
-    """Resolve a profile display name to its directory name ('Munigala AI' -> 'Profile 2').
+    """Resolve a profile display name to its directory name ('Work' -> 'Profile 2').
 
     A directory name that already exists is passed straight through, so both
     forms work wherever a profile is named.
