@@ -1,0 +1,12 @@
+/**
+ * Mock app for browser-agents-lab. Stateless: no bindings, one secret.
+ *   RECEIPT_SECRET: `wrangler secret put RECEIPT_SECRET` (prod), .dev.vars (local)
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "browser-agents-mock",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-09-01",
+	"workers_dev": true,
+	"observability": { "enabled": true }
+}

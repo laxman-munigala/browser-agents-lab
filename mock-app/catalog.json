@@ -1,0 +1,212 @@
+[
+ {
+  "id": "BA-237",
+  "name": "Browser Use",
+  "language": "Python"
+ },
+ {
+  "id": "BA-616",
+  "name": "Stagehand",
+  "language": "TypeScript"
+ },
+ {
+  "id": "BA-995",
+  "name": "Skyvern",
+  "language": "Python"
+ },
+ {
+  "id": "BA-474",
+  "name": "Crawl4AI",
+  "language": "Python"
+ },
+ {
+  "id": "BA-853",
+  "name": "Scrapy",
+  "language": "Python"
+ },
+ {
+  "id": "BA-332",
+  "name": "Cypress",
+  "language": "JavaScript"
+ },
+ {
+  "id": "BA-711",
+  "name": "WebdriverIO",
+  "language": "TypeScript"
+ },
+ {
+  "id": "BA-190",
+  "name": "Nightwatch.js",
+  "language": "JavaScript"
+ },
+ {
+  "id": "BA-569",
+  "name": "TestCafe",
+  "language": "JavaScript"
+ },
+ {
+  "id": "BA-948",
+  "name": "chromedp",
+  "language": "Go"
+ },
+ {
+  "id": "BA-427",
+  "name": "Rod",
+  "language": "Go"
+ },
+ {
+  "id": "BA-806",
+  "name": "Lightpanda",
+  "language": "Zig"
+ },
+ {
+  "id": "BA-285",
+  "name": "Robot Framework",
+  "language": "Python"
+ },
+ {
+  "id": "BA-664",
+  "name": "Playwright",
+  "language": "TypeScript"
+ },
+ {
+  "id": "BA-143",
+  "name": "Pyppeteer",
+  "language": "Python"
+ },
+ {
+  "id": "BA-522",
+  "name": "Splinter",
+  "language": "Python"
+ },
+ {
+  "id": "BA-901",
+  "name": "Helium",
+  "language": "Python"
+ },
+ {
+  "id": "BA-380",
+  "name": "Selenide",
+  "language": "Java"
+ },
+ {
+  "id": "BA-759",
+  "name": "Capybara",
+  "language": "Ruby"
+ },
+ {
+  "id": "BA-238",
+  "name": "Watir",
+  "language": "Ruby"
+ },
+ {
+  "id": "BA-617",
+  "name": "Ferrum",
+  "language": "Ruby"
+ },
+ {
+  "id": "BA-996",
+  "name": "CodeceptJS",
+  "language": "TypeScript"
+ },
+ {
+  "id": "BA-475",
+  "name": "Selenium",
+  "language": "Java"
+ },
+ {
+  "id": "BA-854",
+  "name": "Nodriver",
+  "language": "Python"
+ },
+ {
+  "id": "BA-333",
+  "name": "SeleniumBase",
+  "language": "Python"
+ },
+ {
+  "id": "BA-712",
+  "name": "undetected-chromedriver",
+  "language": "Python"
+ },
+ {
+  "id": "BA-191",
+  "name": "Taiko",
+  "language": "JavaScript"
+ },
+ {
+  "id": "BA-570",
+  "name": "Puppeteer Sharp",
+  "language": "C#"
+ },
+ {
+  "id": "BA-949",
+  "name": "Playwright for .NET",
+  "language": "C#"
+ },
+ {
+  "id": "BA-428",
+  "name": "Playwright for Python",
+  "language": "Python"
+ },
+ {
+  "id": "BA-807",
+  "name": "chromiumoxide",
+  "language": "Rust"
+ },
+ {
+  "id": "BA-286",
+  "name": "fantoccini",
+  "language": "Rust"
+ },
+ {
+  "id": "BA-665",
+  "name": "thirtyfour",
+  "language": "Rust"
+ },
+ {
+  "id": "BA-144",
+  "name": "Notte",
+  "language": "Python"
+ },
+ {
+  "id": "BA-523",
+  "name": "LaVague",
+  "language": "Python"
+ },
+ {
+  "id": "BA-902",
+  "name": "Magentic-UI",
+  "language": "Python"
+ },
+ {
+  "id": "BA-381",
+  "name": "Puppeteer",
+  "language": "TypeScript"
+ },
+ {
+  "id": "BA-760",
+  "name": "Midscene.js",
+  "language": "TypeScript"
+ },
+ {
+  "id": "BA-239",
+  "name": "AgentQL",
+  "language": "Python"
+ },
+ {
+  "id": "BA-618",
+  "name": "Crawlee",
+  "language": "TypeScript"
+ },
+ {
+  "id": "BA-997",
+  "name": "Hero",
+  "language": "TypeScript"
+ },
+ {
+  "id": "BA-476",
+  "name": "Selenium Wire",
+  "language": "Python"
+ }
+]

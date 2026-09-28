@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[oc]
+.venv/
+
+# Secrets and local state
+.env
+mock-app/.dev.vars
+runs/
+traces/
+
+# Node / Wrangler / HyperFrames
+node_modules/
+mock-app/.wrangler/
+talk/deck/composition/snapshots/
+design/
+talk/
+# Local-only talk material and design notes (shared separately)
+design/
+talk/
